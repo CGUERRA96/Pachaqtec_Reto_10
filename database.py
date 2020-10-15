@@ -73,8 +73,10 @@ class Database:
                 id_profesor_curso SERIAL,
                 id_persona int NOT NULL,
                 id_curso int NOT NULL,
+                id_estado int NOT NULL,
                 FOREIGN KEY (id_profesor) REFERENCE personas(id_persona),
-                FOREIGN KEY (id_curso) REFERENCE cursos(curso_id)
+                FOREIGN KEY (id_curso) REFERENCE cursos(curso_id),
+                FOREIGN KEY (id_estado) REFERENCE estados(id_estado)
             );
         '''
         conn.ejecutar_sentencia(create_table_query)
@@ -95,6 +97,15 @@ class Database:
                 nombre_salon varchar(150) NOT NULL,
             );
         '''
+        conn.ejecutar_sentencia(create_table_query)
+
+    def crear_estados(self):
+        create_table_query = '''
+            CREATE TABLE IF NOT EXISTS estados(
+                id_estado SERIAL PRIMARY KEY NOT NULL,
+                nombre_estado varchar(20) not null
+            );
+            '''
         conn.ejecutar_sentencia(create_table_query)
 
 

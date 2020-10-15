@@ -4,7 +4,7 @@ class Tipo_rol:
     def __init__(self):
         self.model = Conexion('tipo_rol')
 
-    def guardar_tipo_rol(self, tipo_rol):
+    def guardar_tipo_rol(self, tipo_rol): # id_tipo_rol : Administrador = 1, Profesor = 2, Alumno = 3
         return self.model.insert(tipo_rol)
 
     def obtener_tipo_rol(self, id_tipo_rol):
